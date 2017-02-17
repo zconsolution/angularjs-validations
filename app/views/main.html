@@ -1,0 +1,76 @@
+<h2 class='text-center'> User Registration </h2>
+  <form name="patientForm" novalidate role="form">
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-sm-12 col-lg-6">
+                <div class="form-group">
+                    <label  class="col-md-5 control-label">First Name*</label>
+                    <div class="col-md-7" ng-class="{'has-error': patientForm.firstName.$invalid && patientForm.firstName.$dirty || formValidStatus && patientForm.firstName.$invalid }" >
+                        <input  tabindex="1" type="text" class="form-control input-sm " name="firstName"  placeholder="Enter firstname" required="" ng-readonly="readOnly" ng-model="patient.firstName" autofocus>
+                        <p class="help-block" ng-show="patientForm.firstName.$error.pattern" >Firstname {{message.TEXT}}</p>
+                        <p class="help-block" ng-show="patientForm.firstName.$error.required && patientForm.firstName.$dirty" >Firstname {{message.REQUIRED}}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-12 col-lg-6">
+                <div class="form-group">
+                    <label  class="col-md-5 control-label">Last Name*</label>
+                    <div class="col-md-7" ng-class="{'has-error': patientForm.lastName.$invalid && patientForm.lastName.$dirty || formValidStatus && patientForm.lastName.$invalid}">
+                        <input tabindex="3" type="text" class="form-control input-sm" name="lastName"  placeholder="Enter lastname" required="" ng-readonly="readOnly"  ng-model="patient.lastName">
+                        <p class="help-block" ng-show="patientForm.lastName.$error.pattern" >Lastname {{message.TEXT}}</p>
+                        <p class="help-block" ng-show="patientForm.lastName.$error.required && patientForm.lastName.$dirty" >Lastname {{message.REQUIRED}}</p>
+                   </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="form-group">
+                    <label  class="col-md-5 control-label">Phone Number* </label>
+                    <div class="col-md-7" ng-class="{'has-error': patientForm.phonenumber.$invalid && patientForm.phonenumber.$dirty || formValidStatus && patientForm.phonenumber.$invalid}">
+                        <input tabindex="4" type="text" class="form-control input-sm" name="phonenumber"  placeholder="Enter Phone Number" required="" ui-mask="999-999-9999" ui-mask-placeholder ng-readonly="readStatus" ng-model="patient.phonenumber">
+                        <p class="help-block" ng-show="patientForm.phonenumber.$error.pattern" >Social security number {{message.NUMBER}} </p>
+                        <p class="help-block" ng-show="patientForm.phonenumber.$error.required && patientForm.phonenumber.$dirty" >Phone number {{message.REQUIRED}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="form-group">
+                    <label  class="col-md-5 control-label">Gender*</label>
+                    <div class="dropdown col-md-7" ng-class="{'has-error': patientForm.gender.$invalid && patientForm.gender.$dirty || formValidStatus && patientForm.gender.$invalid}">
+                        <select tabindex="5" name="gender" class="form-control input-sm" ng-model="patient.gender" required="" ng-disabled="readStatus">
+                            <option value="">---Please select---</option> <!-- not selected / blank option -->
+                            <option value="Female">Female</option> <!-- interpolation -->
+                            <option value="Male">Male</option>
+                        </select>
+                        <p class="help-block" ng-show="patientForm.gender.$error.required && patientForm.gender.$dirty" >Gender {{message.REQUIRED}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="form-group">
+                    <label  class="col-md-5 control-label">Date of Birth*</label>
+                    <div class="col-md-7"> 
+                        <datepicker date-format="yyyy-MM-dd" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
+                          <input ng-model="patientForm.date" type="text" class="form-control input-sm" readonly="" />
+                        </datepicker>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="form-group">
+                    <label  class="col-md-5 control-label">Age</label>
+                    <div class="col-md-7" ng-class="{'has-error': patientForm.age.$invalid && patientForm.age.$dirty}">
+                        <input tabindex="8" type="text" class="form-control input-sm" name="age"  placeholder="Enter age" ng-pattern="/^[0-9]{1,2}$/" ng-readonly="readStatus || disableAge" ng-model="patient.age">
+                        <p class="help-block" ng-show="patientForm.age.$error.pattern" >Age {{message.NUMBER}}</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="text-right">
+            
+            <input type="submit" name='btnSubmit' id='btnSubmit' value='Save' class='bg-primary'
+  ng-disabled="patientForm.$invalid" class="primary">           
+        </div>
+    </div>
+</form>                    
